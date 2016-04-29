@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.Persistence.MongoDb", "Hera.Persistence.MongoDb\Hera.Persistence.MongoDb.csproj", "{D2CDE5E7-05F0-4B45-9F57-2F96C6915D12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.Persistence.MongoDb.Tests", "Hera.Persistence.MongoDb.Tests\Hera.Persistence.MongoDb.Tests.csproj", "{1F36A498-E635-45B5-BD01-32E887588FE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2CDE5E7-05F0-4B45-9F57-2F96C6915D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CDE5E7-05F0-4B45-9F57-2F96C6915D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CDE5E7-05F0-4B45-9F57-2F96C6915D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CDE5E7-05F0-4B45-9F57-2F96C6915D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F36A498-E635-45B5-BD01-32E887588FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F36A498-E635-45B5-BD01-32E887588FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F36A498-E635-45B5-BD01-32E887588FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F36A498-E635-45B5-BD01-32E887588FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
