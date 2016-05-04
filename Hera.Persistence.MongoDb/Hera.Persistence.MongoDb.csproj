@@ -34,12 +34,20 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hera, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hera.0.1.2\lib\Hera.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.3\lib\net45\MongoDB.Bson.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hera.DomainModeling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hera.DomainModeling.0.1.7\lib\Hera.DomainModeling.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.2.3\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.3\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.2.3\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,12 +62,29 @@
   <ItemGroup>
     <Compile Include="Config\MongoDbHeraPersistence.cs" />
     <Compile Include="Config\MongoDbHeraPersistenceExtentions.cs" />
+    <Compile Include="Config\MongoDbPersistenceOptions.cs" />
+    <Compile Include="EventStore\MongoDbCommitStream.cs" />
     <Compile Include="EventStore\MongoDbEventStore.cs" />
+    <Compile Include="MongoDbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Snapshot\MongoDbSnapshot.cs" />
     <Compile Include="Snapshot\MongoDbSnapshotStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PersistenceStrategies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hera.DomainModeling\Hera.DomainModeling\Hera.DomainModeling.csproj">
+      <Project>{bf25f3d5-2222-442c-8c2a-7e67daa3acd2}</Project>
+      <Name>Hera.DomainModeling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hera\Hera\Hera.csproj">
+      <Project>{568f400b-631b-466b-98f8-16eee07d4a4e}</Project>
+      <Name>Hera</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

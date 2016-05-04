@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.Persistence.MongoDb", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.Persistence.MongoDb.Tests", "Hera.Persistence.MongoDb.Tests\Hera.Persistence.MongoDb.Tests.csproj", "{1F36A498-E635-45B5-BD01-32E887588FE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera", "..\Hera\Hera\Hera.csproj", "{568F400B-631B-466B-98F8-16EEE07D4A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.ExampleModel", "..\Hera.ExampleModel\Hera.ExampleModel\Hera.ExampleModel.csproj", "{BF87C644-3133-497F-BCD8-B113CD909C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hera.DomainModeling", "..\Hera.DomainModeling\Hera.DomainModeling\Hera.DomainModeling.csproj", "{BF25F3D5-2222-442C-8C2A-7E67DAA3ACD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{1F36A498-E635-45B5-BD01-32E887588FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F36A498-E635-45B5-BD01-32E887588FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F36A498-E635-45B5-BD01-32E887588FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568F400B-631B-466B-98F8-16EEE07D4A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568F400B-631B-466B-98F8-16EEE07D4A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568F400B-631B-466B-98F8-16EEE07D4A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568F400B-631B-466B-98F8-16EEE07D4A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF87C644-3133-497F-BCD8-B113CD909C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF87C644-3133-497F-BCD8-B113CD909C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF87C644-3133-497F-BCD8-B113CD909C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF87C644-3133-497F-BCD8-B113CD909C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF25F3D5-2222-442C-8C2A-7E67DAA3ACD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF25F3D5-2222-442C-8C2A-7E67DAA3ACD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF25F3D5-2222-442C-8C2A-7E67DAA3ACD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF25F3D5-2222-442C-8C2A-7E67DAA3ACD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

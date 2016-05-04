@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Hera.Persistence;
 using Hera.Persistence.EventStore;
 using Hera.Persistence.MongoDb.EventStore;
 using Hera.Persistence.MongoDb.Snapshot;
@@ -17,8 +18,9 @@ namespace Hera
         {
             hera.Builder.RegisterType<MongoDbEventStore>().As<IEventStore>().SingleInstance();
             hera.Builder.RegisterType<MongoDbSnapshotStore>().As<ISnapshotStore>().SingleInstance();
-            //hera.Builder.RegisterType<DefaultCommitNotifier>().As<ICommitNotifier>().SingleInstance();
-            //hera.Builder.RegisterType<DefaultEventPublisher>().As<IEventPublisher>().SingleInstance();
+
+            hera.Builder.RegisterType<DefaultCommitNotifier>().As<ICommitNotifier>().SingleInstance();
+            hera.Builder.RegisterType<DefaultEventPublisher>().As<IEventPublisher>().SingleInstance();
 
             return new MongoDbHeraPersistence(hera);
         }

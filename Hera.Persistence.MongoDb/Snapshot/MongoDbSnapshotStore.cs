@@ -1,4 +1,5 @@
 ﻿using Hera.Persistence.Snapshot;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,19 @@ namespace Hera.Persistence.MongoDb.Snapshot
     {
         public Persistence.Snapshot.Snapshot Load(string streamId)
         {
-            throw new NotImplementedException();
+            var filter = Builders<MongoDbSnapshot>.Filter.Eq<string>(p => p.StreamId, streamId);
+            var sort = Builders<MongoDbSnapshot>.Sort.Descending(p => p.Revision);
+
+            var snapshot = MongoDbHelper.Snapshots.Find(filter).Sort(sort).Limit(1).SingleOrDefault();
+
+            return snapshot;
+
         }
         public void Save(Persistence.Snapshot.Snapshot snapshot)
         {
-            throw new NotImplementedException();
+            var mongoDbSnapshot = new MongoDbSnapshot(snapshot);
+
+            MongoDbHelper.Snapshots.InsertOne(mongoDbSnapshot);
         }
     }
 }

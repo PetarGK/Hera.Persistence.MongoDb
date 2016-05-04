@@ -1,4 +1,5 @@
 ﻿using Hera.Persistence.EventStore;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,25 @@ namespace Hera.Persistence.MongoDb.EventStore
     {
         public void Append(CommitStream commitStream)
         {
-            throw new NotImplementedException();
+            var commit = new MongoDbCommitStream(commitStream);
+
+            MongoDbHelper.Commits.InsertOne(commit);
         }
         public EventStream Load(string streamId)
         {
-            throw new NotImplementedException();
+            var commits = MongoDbHelper.Commits.Find(Builders<MongoDbCommitStream>.Filter.Eq<string>(p => p.StreamId, streamId)).ToList();
+
+            return new EventStream(commits);
         }
         public EventStream Load(string streamId, int skipRevision)
         {
-            throw new NotImplementedException();
+            var filter1 = Builders<MongoDbCommitStream>.Filter.Eq<string>(p => p.StreamId, streamId);
+            var filter2 = Builders<MongoDbCommitStream>.Filter.Lt<int>(p => p.Revision, skipRevision);
+            var filter = filter1 & filter2;
+
+            var commits = MongoDbHelper.Commits.Find(filter).ToList();
+
+            return new EventStream(commits);
         }
     }
 }
