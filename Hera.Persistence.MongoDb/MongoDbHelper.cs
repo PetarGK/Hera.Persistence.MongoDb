@@ -11,15 +11,31 @@ namespace Hera.Persistence.MongoDb
 {
     internal static class MongoDbHelper
     {
+        private static bool _isInitialized;
+        private static object _lock;
         private static IMongoCollection<MongoDbCommitStream> _commits;
         private static IMongoCollection<MongoDbSnapshot> _snapshots;
 
         static MongoDbHelper()
         {
-            var client = new MongoClient();
-            var database = client.GetDatabase("EventStore");
-            _commits = database.GetCollection<MongoDbCommitStream>("Commits");
-            _snapshots = database.GetCollection<MongoDbSnapshot>("Snapshots");
+            _isInitialized = false;
+            _lock = new object();
+        }
+
+        public static void Init(MongoDbPersistenceOptions options)
+        {
+            lock(_lock)
+            {
+                if (!_isInitialized)
+                {
+                    var client = new MongoClient();
+                    var database = client.GetDatabase(options.DatabaseName);
+                    _commits = database.GetCollection<MongoDbCommitStream>("Commits");
+                    _snapshots = database.GetCollection<MongoDbSnapshot>("Snapshots");
+
+                    _isInitialized = true;
+                }
+            }
         }
 
         public static IMongoCollection<MongoDbCommitStream> Commits

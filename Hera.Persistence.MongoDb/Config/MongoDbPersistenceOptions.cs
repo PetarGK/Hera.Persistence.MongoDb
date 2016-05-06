@@ -8,5 +8,6 @@ namespace Hera
 {
     public class MongoDbPersistenceOptions
     {
+        public string DatabaseName { get; set; }
     }
 }

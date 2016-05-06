@@ -16,9 +16,10 @@ namespace Hera
     {
         public static MongoDbHeraPersistence UsingMongoDbPersistence(this HeraPersistence hera, MongoDbPersistenceOptions options)
         {
-            hera.Builder.RegisterType<MongoDbEventStore>().As<IEventStore>().SingleInstance();
-            hera.Builder.RegisterType<MongoDbSnapshotStore>().As<ISnapshotStore>().SingleInstance();
+            hera.Builder.RegisterInstance(new MongoDbEventStore(options)).As<IEventStore>().SingleInstance();
+            hera.Builder.RegisterInstance(new MongoDbSnapshotStore(options)).As<ISnapshotStore>().SingleInstance();
 
+            // TODO: Move on the proper place
             hera.Builder.RegisterType<DefaultCommitNotifier>().As<ICommitNotifier>().SingleInstance();
             hera.Builder.RegisterType<DefaultEventPublisher>().As<IEventPublisher>().SingleInstance();
 

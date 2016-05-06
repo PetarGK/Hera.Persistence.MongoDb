@@ -26,7 +26,7 @@ namespace Hera.Persistence.MongoDb.Tests
                 .SetupPersistence()
                 .UsingMongoDbPersistence(new MongoDbPersistenceOptions()
                 {
-
+                    DatabaseName = "EventStore"
                 })
                 .UsingBinarySerialization();
 
@@ -75,6 +75,8 @@ namespace Hera.Persistence.MongoDb.Tests
 
                 var order = CreateOrder();
 
+                order.AddProduct(new ProductId(Guid.NewGuid()), new Price(30.0m), 3);
+
                 snapshotManager.CreateSnapshot(order);
 
                 var order2 = snapshotManager.RestoreAggregate<Order>(_orderId);
@@ -104,6 +106,21 @@ namespace Hera.Persistence.MongoDb.Tests
                     using (var stream2 = new MemoryStream(serializedOrder))
                     {
                         var order2 = serializer.Deserialize<Order>(stream2);
+
+                        order2.AddProduct(new ProductId(Guid.NewGuid()), new Price(20.0m), 2);
+
+                        using (var stream3 = new MemoryStream())
+                        {
+                            serializer.Serialize(stream3, order2);
+
+                            var serializedOrder2 = stream3.ToArray();
+
+                            using (var stream4 = new MemoryStream(serializedOrder2))
+                            {
+                                var order3 = serializer.Deserialize<Order>(stream4);
+
+                            }
+                        }
                     }
                 }
             }

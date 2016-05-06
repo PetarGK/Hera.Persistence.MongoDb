@@ -10,6 +10,11 @@ namespace Hera.Persistence.MongoDb.Snapshot
 {
     public class MongoDbSnapshotStore : ISnapshotStore
     {
+        public MongoDbSnapshotStore(MongoDbPersistenceOptions options)
+        {
+            MongoDbHelper.Init(options);
+        }
+
         public Persistence.Snapshot.Snapshot Load(string streamId)
         {
             var filter = Builders<MongoDbSnapshot>.Filter.Eq<string>(p => p.StreamId, streamId);

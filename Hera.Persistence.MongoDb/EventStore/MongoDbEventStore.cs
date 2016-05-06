@@ -10,6 +10,11 @@ namespace Hera.Persistence.MongoDb.EventStore
 {
     public class MongoDbEventStore : IEventStore
     {
+        public MongoDbEventStore(MongoDbPersistenceOptions options)
+        {
+            MongoDbHelper.Init(options);
+        }
+
         public void Append(CommitStream commitStream)
         {
             var commit = new MongoDbCommitStream(commitStream);
